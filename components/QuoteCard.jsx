@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import {AiOutlineDelete} from "react-icons/ai"
+import {AiOutlineEdit} from "react-icons/ai"
 
 const QuoteCard = ({post, handleEdit, handleDelete, handleTagClick}) => {
   const { data: session } = useSession();
@@ -70,16 +72,16 @@ const QuoteCard = ({post, handleEdit, handleDelete, handleTagClick}) => {
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
           <p
-            className='font-inter text-sm green_gradient cursor-pointer'
+            className='font-inter text-green-700 cursor-pointer'
             onClick={handleEdit}
           >
-            Edit
+           <AiOutlineEdit/>
           </p>
           <p
-            className='font-inter text-sm orange_gradient cursor-pointer'
+            className='font-inter text-red-700 cursor-pointer'
             onClick={handleDelete}
           >
-            Delete
+            <AiOutlineDelete/>
           </p>
         </div>
       )}       
